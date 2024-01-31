@@ -1,0 +1,131 @@
+<div class="form-container">
+    <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+            <label for="firstname">FirstName:</label>
+            <input id="firstname" name="firstname" formControlName="firstName" required>
+            <div *ngIf="detailsForm.get('firstName')?.errors?.['required'] && detailsForm.get('firstName')?.touched">
+                First Name is required</div>
+            <div *ngIf="detailsForm.get('firstName')?.errors?.['maxlength']">
+                Name cannot be more than 20</div>
+        </div>
+
+        <div class="formGroup">
+            <label for="secondname">MiddleName:</label>
+            <input id="middlename" type="text" formControlName="middleName">
+            <div *ngIf="detailsForm.get('middleName')?.errors?.['maxlength']">
+                Name cannot be more than 20</div>
+        </div>
+
+        <div class="formGroup">
+            <label for="lastname">LastName:</label>
+            <input id="lastname" type="text" formControlName="lastName" required>
+            <div *ngIf="detailsForm.get('lastName')?.errors?.['required'] && detailsForm.get('lastName')?.touched">
+                First Name is required</div>
+            <div *ngIf="detailsForm.get('lastName')?.errors?.['maxlength']">
+                Name cannot be more than 20</div>
+        </div>
+
+        <div class="formGroup">
+            <label for="age">Age:</label>
+            <input id="age" type="number" formControlName="age" required>
+            <div *ngIf="detailsForm.get('age')?.errors?.['required'] && detailsForm.get('age')?.touched">
+                Age is required</div>
+            <div
+                *ngIf="detailsForm.get('age')?.errors?.['min'] || detailsForm.get('age')?.errors?.['max'] && detailsForm.get('age')?.touched">
+                Age should be between 10 and 50</div>
+            <div *ngIf="detailsForm.get('firstName')?.errors?.['pattern'] && detailsForm.get('age')?.touched">
+                Age should be a number</div>
+        </div>
+
+        <div class="formGroup">
+            <label for="gender">Gender</label>
+            <div class="radio">
+                <label for="male">
+                    Male
+                    <input type="radio" name="gender" value="male" formControlName="gender">
+                </label>
+                <label for="female">
+                    Female
+                    <input type="radio" name="gender" value="female" fromControlName="gender">
+                </label>
+            </div>
+        </div>
+
+        <div class="formGroup">
+            <div formGroupName="address">
+                <label>Address</label>
+                <div>
+                    <div>
+                        <label>Street:</label>
+                        <input type="text" id="street" formControlName="street">
+                        <div
+                            *ngIf="detailsForm.get('address')?.get('street')?.errors?.['required'] && detailsForm.get('address')?.get('street')?.touched">
+                            Street is required</div>
+                        <div *ngIf="detailsForm.get('address')?.get('street')?.errors?.['maxlength']">
+                            street cannot be more than 20</div>
+                    </div>
+
+                    <label>Landmark:</label>
+                    <input type="text" id="landmark" formControlName="landmark">
+                    <div *ngIf="detailsForm.get('address')?.get('landmark')?.errors?.['maxlength']">
+                        Landmark cannot be more than 20</div>
+
+                    <label>City:</label>
+                    <input type="text" id="city" formControlName="city">
+                    <div
+                        *ngIf="detailsForm.get('address')?.get('city')?.errors?.['required'] && detailsForm.get('address')?.get('city')?.touched">
+                        City is required</div>
+                    <div *ngIf="detailsForm.get('address')?.get('city')?.errors?.['maxlength']">
+                        City cannot be more than 20</div>
+
+                    <label>State:</label>
+                    <input type="text" id="state" formControlName="state">
+                    <div
+                        *ngIf="detailsForm.get('address')?.get('state')?.errors?.['required'] && detailsForm.get('address')?.get('state')?.touched">
+                        State is required</div>
+                    <div *ngIf="detailsForm.get('address')?.get('state')?.errors?.['maxlength']">
+                        State cannot be more than 20</div>
+
+                    <label>ZipCode:</label>
+                    <input type="number" id="zipcode" formControlName="zipcode">
+                    <div
+                        *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['required'] && detailsForm.get('address')?.get('zipcode')?.touched">
+                        ZipCode is required</div>
+                    <div *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['maxlength']">
+                        Name cannot be more than 20</div>
+                    <div *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['pattern'] && detailsForm.get('address')?.get('zipcode')?.touched">
+                        ZipCode should be a number</div>
+
+                    <label>Country:</label>
+                    <input type="text" id="country" formControlName="country">
+                    <div
+                        *ngIf="detailsForm.get('address')?.get('country')?.errors?.['required'] && detailsForm.get('address')?.get('country')?.touched">
+                        Country is required</div>
+                    <div *ngIf="detailsForm.get('address')?.get('country')?.errors?.['maxlength']">
+                        Country cannot be more than 20</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="formGroup">
+            <div class="hobby-container">
+                <label>Hobbies:</label>
+                <ng-container formArrayName="hobbies">
+                    <div *ngFor="let hobby of hobbies.controls; index as i" class="hobby">
+                        <input type="text" [formControlName]="i">
+                        <div (click)="removeHobbies(i)">
+                            <span class="material-symbols-outlined">
+                                close
+                            </span>
+                        </div>
+                    </div>
+                </ng-container>
+                <button type="button" (click)="addHobbies()">Add Hobby</button>
+                <button type="reset" (click)="clear()">Clear</button>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

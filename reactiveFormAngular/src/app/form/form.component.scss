@@ -1,0 +1,55 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+input {
+    width: 500px;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background-color: rgba(125, 120, 120, 0.089);
+}
+
+label {
+    padding: 5px;
+    display: flex;
+    align-items: left;
+}
+
+.form-container {
+    box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 700px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.radio label {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    align-items: center;
+}
+
+.hobby {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.hobby-container button{
+    margin-right: 10px;
+}
