@@ -32,10 +32,9 @@ label {
     border-radius: 20px;
 }
 
-.radio label {
-    display: grid;
-    grid-template-columns: 5fr 5fr;
-    align-items: center;
+.radio {
+    display: flex;
+    flex-direction: column;
 }
 
 .hobby {

@@ -27,13 +27,13 @@
 
         <div class="formGroup">
             <label for="age">Age:</label>
-            <input id="age" type="number" formControlName="age" required>
+            <input id="age" type="text" formControlName="age" required>
             <div *ngIf="detailsForm.get('age')?.errors?.['required'] && detailsForm.get('age')?.touched">
                 Age is required</div>
             <div
-                *ngIf="detailsForm.get('age')?.errors?.['min'] || detailsForm.get('age')?.errors?.['max'] && detailsForm.get('age')?.touched">
+                *ngIf="detailsForm.get('age')?.errors?.['min'] && detailsForm.get('age')?.touched || detailsForm.get('age')?.errors?.['max'] && detailsForm.get('age')?.touched">
                 Age should be between 10 and 50</div>
-            <div *ngIf="detailsForm.get('firstName')?.errors?.['pattern'] && detailsForm.get('age')?.touched">
+            <div *ngIf="detailsForm.get('age')?.errors?.['pattern']">
                 Age should be a number</div>
         </div>
 
@@ -87,13 +87,13 @@
                         State cannot be more than 20</div>
 
                     <label>ZipCode:</label>
-                    <input type="number" id="zipcode" formControlName="zipcode">
+                    <input type="text" id="zipcode" formControlName="zipcode">
                     <div
                         *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['required'] && detailsForm.get('address')?.get('zipcode')?.touched">
                         ZipCode is required</div>
                     <div *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['maxlength']">
-                        Name cannot be more than 20</div>
-                    <div *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['pattern'] && detailsForm.get('address')?.get('zipcode')?.touched">
+                        ZipCode cannot be more than 20</div>
+                    <div *ngIf="detailsForm.get('address')?.get('zipcode')?.errors?.['pattern']">
                         ZipCode should be a number</div>
 
                     <label>Country:</label>
