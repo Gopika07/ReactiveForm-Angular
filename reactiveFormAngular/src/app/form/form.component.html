@@ -38,22 +38,19 @@
         </div>
 
         <div class="formGroup">
-            <label for="gender">Gender</label>
+            <label for="gender">Gender:</label>
             <div class="radio">
-                <label for="male">
-                    Male
-                    <input type="radio" name="gender" value="male" formControlName="gender">
-                </label>
-                <label for="female">
-                    Female
-                    <input type="radio" name="gender" value="female" fromControlName="gender">
-                </label>
+                <input type="radio" name="gender" value="male" formControlName="gender">
+                <label for="male"  class="radio-label">Male</label>
+
+                <input type="radio" name="gender" value="female" formControlName="gender">
+                <label for="female"  class="radio-label">Female</label>
             </div>
         </div>
 
         <div class="formGroup">
             <div formGroupName="address">
-                <label>Address</label>
+                <label>Address:</label>
                 <div>
                     <div>
                         <label>Street:</label>
